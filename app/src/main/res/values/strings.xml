@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GuideMe</string>
+    <string name="title_activity_custom_top_app_bar">CustomTopAppBar</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_sign_up">SignUp</string>
+</resources>
