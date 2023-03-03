@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -50,7 +51,12 @@ dependencies {
     // This dependency contains material icons
     // If you want to use it, enable Proguard because of its large size
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
-
+    // Google maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    // Google maps for compose
+    implementation 'com.google.maps.android:maps-compose:2.8.0'
+    // Other Dependencies
     implementation 'androidx.navigation:navigation-compose:2.5.3'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'

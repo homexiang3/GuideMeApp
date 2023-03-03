@@ -14,22 +14,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.guideme.R
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
 fun HomePage() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .wrapContentSize(Alignment.Center)
+    val barcelona = LatLng(41.39, 2.15)
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(barcelona, 10f)
+    }
+    GoogleMap(
+        modifier = Modifier.fillMaxSize(),
+        cameraPositionState = cameraPositionState
     ) {
-        Text(
-            text = "Home Screen",
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
+        Marker(
+            state = MarkerState(position = barcelona),
+            title = "barcelona",
+            snippet = "Marker in Barcelona"
         )
     }
 }
