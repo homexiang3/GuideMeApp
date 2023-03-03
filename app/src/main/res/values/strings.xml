@@ -4,4 +4,12 @@
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_bottom_navigation_bar">BottomNavigationBar</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_my_itineraries">MyItineraries</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_itineraries_page">ItinerariesPage</string>
+    <string name="title_activity_favorites_page">FavoritesPage</string>
+    <string name="title_activity_questionnaire_page">QuestionnairePage</string>
+    <string name="title_activity_top_bar">TopBar</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.guideme.component.ui.theme
+package com.example.guideme.components.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
