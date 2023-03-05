@@ -1,23 +1,30 @@
 package com.example.guideme
 //External Imports
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
 //Internal Imports
 import com.example.guideme.components.BottomNavigation
 import com.example.guideme.components.NavigationGraph
 import com.example.guideme.components.TopBar
-import com.example.guideme.pages.*
+import com.example.guideme.pages.LoginPage
 import com.example.guideme.ui.theme.GuideMeTheme
 
+class UserInfo (
+    isLogged:Boolean = false,
+    username:String = ""
+){
+    var isLogged by mutableStateOf(isLogged)
+    var username by mutableStateOf(username)
+}
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreenView()
+                    MainScreenView(UserInfo())
                 }
             }
         }
@@ -36,17 +43,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreenView(){
+fun MainScreenView(User:UserInfo){
     val navController = rememberNavController()
-    Scaffold(
-        //Top bar
-        topBar = { TopBar("Guide Me")},
-        //Bottom bar
-        bottomBar = { BottomNavigation(navController = navController) }
-    ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
-            //Invoke navigation graph to open content
-            NavigationGraph(navController = navController)
+    if(!User.isLogged){
+        LoginPage(User)
+    } else {
+        Scaffold(
+            //Top bar
+            topBar = { TopBar("Guide Me") },
+            //Bottom bar
+            bottomBar = { BottomNavigation(navController = navController) }
+        ) { innerPadding ->
+            Box(modifier = Modifier.padding(innerPadding)) {
+                //Invoke navigation graph to open content
+                NavigationGraph(navController = navController, User)
+            }
         }
     }
 }

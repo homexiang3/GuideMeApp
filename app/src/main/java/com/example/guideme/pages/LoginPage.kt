@@ -26,10 +26,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.guideme.R
+import com.example.guideme.UserInfo
 
 
 @Composable
-fun LoginPage() {
+fun LoginPage(User:UserInfo = UserInfo()) {
     //Sign up
     Box(modifier = Modifier.fillMaxSize()) {
         ClickableText(
@@ -85,7 +86,16 @@ fun LoginPage() {
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
-                onClick = { },
+                onClick = {
+                    if (username.value.text.isNotEmpty()
+                        && password.value.text.isNotEmpty()
+                    ) {
+                        User.isLogged = true
+                        User.username = username.value.text
+                    } else {
+                        println("Fill all the inputs!")
+                    }
+                },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -106,10 +116,4 @@ fun LoginPage() {
             )
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-        LoginPage()
 }

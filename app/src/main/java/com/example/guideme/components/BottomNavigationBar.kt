@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.guideme.R
 import com.example.guideme.pages.*
+import com.example.guideme.UserInfo
 
 sealed class BottomNavItem(var title:String, var icon: ImageVector, var screen_route:String){
 
@@ -72,7 +73,7 @@ fun BottomNavigation(navController: NavController) {
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController, User:UserInfo) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
             HomePage()
@@ -87,7 +88,7 @@ fun NavigationGraph(navController: NavHostController) {
             QuestionnairePage()
         }
         composable(BottomNavItem.Profile.screen_route) {
-            UserProfile()
+            UserProfile(User)
         }
     }
 }

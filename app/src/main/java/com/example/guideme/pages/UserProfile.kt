@@ -19,9 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.guideme.R
+import com.example.guideme.UserInfo
 
 @Composable
-fun UserProfile() {
+fun UserProfile(User:UserInfo) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,19 +39,25 @@ fun UserProfile() {
         )
         Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(64.dp))
         Text(
+            text = "${User.username}",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp
+        )
+        Text(
             text = "Pepito Garcia Villanueva"
         )
         Text(
             text = "pepito01@gmail.com"
         )
-        LogOutButton()
+        LogOutButton(User)
     }
 }
 
 @Composable
-private fun LogOutButton() {
+private fun LogOutButton(User:UserInfo) {
     Button(onClick = {
-        //create function to go to the login (TO DO)
+        User.isLogged = false
+        User.username = ""
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
         shape = RoundedCornerShape(50.dp)
@@ -68,5 +75,6 @@ private fun LogOutButton() {
 @Preview(showBackground = true)
 @Composable
 fun UserProfilePreview() {
-    UserProfile()
+    var user = UserInfo(true,"TestUsername")
+    UserProfile(user)
 }
