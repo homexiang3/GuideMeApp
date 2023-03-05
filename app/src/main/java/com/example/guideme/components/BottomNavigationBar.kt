@@ -24,7 +24,7 @@ sealed class BottomNavItem(var title:String, var icon: ImageVector, var screen_r
     object Itinerary: BottomNavItem("Itineraries",Icons.Filled.Map,"itineraries")
     object Favorite: BottomNavItem("Favorites",Icons.Filled.Favorite,"favorites")
     object Questionnaire: BottomNavItem("Quiz",Icons.Filled.Quiz,"questionnaire")
-    object Profile: BottomNavItem("Profile",Icons.Filled.SupervisedUserCircle,"profile")
+    object Profile: BottomNavItem("Profile",Icons.Filled.AccountCircle,"profile")
 }
 @Composable
 fun BottomNavigation(navController: NavController) {

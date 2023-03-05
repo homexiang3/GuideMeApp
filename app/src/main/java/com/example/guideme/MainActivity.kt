@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreenView(){
     val navController = rememberNavController()
@@ -50,10 +49,4 @@ fun MainScreenView(){
             NavigationGraph(navController = navController)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationPreview() {
-    MainScreenView()
 }
