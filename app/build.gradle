@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.guideme"
-        minSdk 21
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -48,6 +48,9 @@ android {
 }
 
 dependencies {
+    //tinder plugin
+    implementation 'com.alexstyl.swipeablecard:swipeablecard:0.1.0'
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.28.0"
     // This dependency contains material icons
     // If you want to use it, enable Proguard because of its large size
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"

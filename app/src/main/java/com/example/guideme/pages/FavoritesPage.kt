@@ -115,7 +115,7 @@ private fun FavoriteCard(data:FavoritesCardInfo){
                     )
                 }
                 Column (){
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { /*TODO function to delete item*/ }) {
                         Icon(imageVector = data.likeIcon, contentDescription = "Favorite Icon", tint = Color.Red)
                     }
                 }
