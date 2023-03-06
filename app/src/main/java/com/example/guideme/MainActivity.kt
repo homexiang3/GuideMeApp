@@ -20,10 +20,15 @@ import com.example.guideme.ui.theme.GuideMeTheme
 
 class UserInfo (
     isLogged:Boolean = false,
-    username:String = ""
+    username:String = "",
+    fullName:String = "Pepito Garcia Villanueva",
+    email:String = "pepito01@gmail.com"
 ){
     var isLogged by mutableStateOf(isLogged)
     var username by mutableStateOf(username)
+    //Hardcoded fullName - email
+    val fullName = fullName
+    val email = email
 }
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -39,15 +39,15 @@ fun UserProfile(User:UserInfo) {
         )
         Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(64.dp))
         Text(
-            text = "${User.username}",
+            text = User.username,
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp
         )
         Text(
-            text = "Pepito Garcia Villanueva"
+            text = User.fullName
         )
         Text(
-            text = "pepito01@gmail.com"
+            text = User.email
         )
         LogOutButton(User)
     }

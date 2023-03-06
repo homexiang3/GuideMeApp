@@ -117,3 +117,8 @@ fun LoginPage(User:UserInfo = UserInfo()) {
         )
     }
 }
+@Preview(showBackground = true)
+@Composable
+fun LoginPreview() {
+    LoginPage(UserInfo())
+}

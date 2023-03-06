@@ -13,4 +13,5 @@
     <string name="title_activity_questionnaire_page">QuestionnairePage</string>
     <string name="title_activity_top_bar">TopBar</string>
     <string name="title_activity_login_page">LoginPage</string>
+    <string name="title_activity_search_bar">SearchBar</string>
 </resources>
