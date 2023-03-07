@@ -76,7 +76,7 @@ fun BottomNavigation(navController: NavController) {
 fun NavigationGraph(navController: NavHostController, User:UserInfo) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
-            HomePage()
+            HomePage(User)
         }
         composable(BottomNavItem.Itinerary.screen_route) {
             ItinerariesPage()
@@ -85,7 +85,7 @@ fun NavigationGraph(navController: NavHostController, User:UserInfo) {
             FavoritesPage()
         }
         composable(BottomNavItem.Questionnaire.screen_route) {
-            QuestionnairePage()
+            QuestionnairePage(User)
         }
         composable(BottomNavItem.Profile.screen_route) {
             UserProfile(User)

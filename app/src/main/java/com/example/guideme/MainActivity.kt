@@ -22,10 +22,12 @@ class UserInfo (
     isLogged:Boolean = false,
     username:String = "",
     fullName:String = "Pepito Garcia Villanueva",
-    email:String = "pepito01@gmail.com"
+    email:String = "pepito01@gmail.com",
+    preferences:MutableList<Boolean> = mutableListOf(false,false,false,false,false,false,false)
 ){
     var isLogged by mutableStateOf(isLogged)
     var username by mutableStateOf(username)
+    var preferences by mutableStateOf(preferences)
     //Hardcoded fullName - email
     val fullName = fullName
     val email = email

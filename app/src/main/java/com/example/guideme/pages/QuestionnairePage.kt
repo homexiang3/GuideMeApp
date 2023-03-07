@@ -27,16 +27,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.alexstyl.swipeablecard.Direction
 import com.alexstyl.swipeablecard.ExperimentalSwipeableCardApi
 import com.alexstyl.swipeablecard.rememberSwipeableCardState
 import com.alexstyl.swipeablecard.swipableCard
 import com.example.guideme.R
+import com.example.guideme.UserInfo
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
-fun QuestionnairePage() {
+fun QuestionnairePage(User: UserInfo) {
             TransparentSystemBars()
             Box(
                 modifier = Modifier
@@ -90,6 +92,7 @@ fun QuestionnairePage() {
                             LaunchedEffect(matchProfile, state.swipedDirection) {
                                 if (state.swipedDirection != null) {
                                     hint = "You swiped ${stringFrom(state.swipedDirection!!)}"
+                                    User.preferences[matchProfile.index] = state.swipedDirection == Direction.Right
                                 }
                             }
                         }
@@ -229,22 +232,23 @@ fun Scrim(modifier: Modifier = Modifier) {
 }
 
 data class MatchProfile(
+    val index: Int,
     val name: String,
     @DrawableRes val drawableResId: Int,
 )
 
 val profiles = listOf(
-    MatchProfile("Cultural Tourism", R.drawable.cultural),
-    MatchProfile("Adventure Tourism", R.drawable.adventure),
-    MatchProfile("Gastronomic Tourism", R.drawable.gastronomic),
-    MatchProfile("Relaxing Tourism", R.drawable.relax),
-    MatchProfile("Rural Tourism", R.drawable.rural),
-    MatchProfile("Business Tourism", R.drawable.business),
-    MatchProfile("Familiar Tourism", R.drawable.familiar),
+    MatchProfile(0,"Adventure Tourism", R.drawable.adventure),
+    MatchProfile(1,"Business Tourism", R.drawable.business),
+    MatchProfile(2,"Cultural Tourism", R.drawable.cultural),
+    MatchProfile(3,"Familiar Tourism", R.drawable.familiar),
+    MatchProfile(4,"Gastronomic Tourism", R.drawable.gastronomic),
+    MatchProfile(5,"Relaxing Tourism", R.drawable.relax),
+    MatchProfile(6,"Rural Tourism", R.drawable.rural),
 )
 
 @Preview(showBackground = true)
 @Composable
 fun QuizPreview() {
-    QuestionnairePage()
+    QuestionnairePage(UserInfo())
 }
