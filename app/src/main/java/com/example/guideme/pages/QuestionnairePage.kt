@@ -111,7 +111,9 @@ fun QuestionnairePage() {
                                     last?.swipe(com.alexstyl.swipeablecard.Direction.Left)
                                 }
                             },
-                            icon = Icons.Rounded.Close
+                            icon = Icons.Rounded.Close,
+                            Color.White,
+                            Color.Red
                         )
                         CircleButton(
                             onClick = {
@@ -124,7 +126,9 @@ fun QuestionnairePage() {
                                     last?.swipe(com.alexstyl.swipeablecard.Direction.Right)
                                 }
                             },
-                            icon = Icons.Rounded.Favorite
+                            icon = Icons.Rounded.Favorite,
+                            Color.White,
+                            Color.Red
                         )
                     }
                 }
@@ -135,17 +139,19 @@ fun QuestionnairePage() {
 private fun CircleButton(
     onClick: () -> Unit,
     icon: ImageVector,
+    background: Color,
+    color: Color
 ) {
     IconButton(
         modifier = Modifier
             .clip(CircleShape)
-            .background(MaterialTheme.colors.primary)
+            .background(background)
             .size(56.dp)
-            .border(2.dp, MaterialTheme.colors.primary, CircleShape),
+            .border(2.dp,background, CircleShape),
         onClick = onClick
     ) {
         Icon(icon, null,
-            tint = MaterialTheme.colors.onPrimary)
+            tint = color)
     }
 }
 
@@ -161,7 +167,7 @@ private fun ProfileCard(
                 painter = painterResource(matchProfile.drawableResId),
                 contentDescription = null)
             Scrim(Modifier.align(Alignment.BottomCenter))
-            Column(Modifier.align(Alignment.BottomStart)) {
+            Column(Modifier.align(Alignment.BottomCenter)) {
                 Text(text = matchProfile.name,
                     color = MaterialTheme.colors.onPrimary,
                     fontSize = 22.sp,
@@ -228,9 +234,13 @@ data class MatchProfile(
 )
 
 val profiles = listOf(
-    MatchProfile("Erlich Bachman", R.drawable.erlich),
-    MatchProfile("Richard Hendricks", R.drawable.erlich),
-    MatchProfile("Laurie Bream", R.drawable.erlich),
+    MatchProfile("Cultural Tourism", R.drawable.cultural),
+    MatchProfile("Adventure Tourism", R.drawable.adventure),
+    MatchProfile("Gastronomic Tourism", R.drawable.gastronomic),
+    MatchProfile("Relaxing Tourism", R.drawable.relax),
+    MatchProfile("Rural Tourism", R.drawable.rural),
+    MatchProfile("Business Tourism", R.drawable.business),
+    MatchProfile("Familiar Tourism", R.drawable.familiar),
 )
 
 @Preview(showBackground = true)
