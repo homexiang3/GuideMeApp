@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,22 +32,6 @@ import com.example.guideme.UserInfo
 
 @Composable
 fun LoginPage(User:UserInfo = UserInfo()) {
-    //Sign up
-    Box(modifier = Modifier.fillMaxSize()) {
-        ClickableText(
-            text = AnnotatedString("Sign up here"),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            onClick = { },
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontFamily = FontFamily.Default,
-                textDecoration = TextDecoration.Underline,
-                color = colorResource(id = R.color.purple_700)
-            )
-        )
-    }
     //Column with form info
     Column(
         modifier = Modifier.padding(20.dp)
@@ -76,45 +61,62 @@ fun LoginPage(User:UserInfo = UserInfo()) {
             onValueChange = { username.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Password") },
-            value = password.value,
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { password.value = it })
+        Box {
+            Column {
+                TextField(
+                    label = { Text(text = "Password") },
+                    value = password.value,
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    onValueChange = { password.value = it })
+                //Forgot Password
+                ClickableText(
+                    text = AnnotatedString("Forgot password?"),
+                    onClick = { },
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily.Default,
+                    )
+                )
+            }
+        }
         //Login Button
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
-            Button(
-                onClick = {
-                    if (username.value.text.isNotEmpty()
-                        && password.value.text.isNotEmpty()
-                    ) {
-                        User.isLogged = true
-                        User.username = username.value.text
-                    } else {
-                        println("Fill all the inputs!")
-                    }
-                },
-                shape = RoundedCornerShape(50.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red))
-            ) {
-                Text(text = "Login", color = Color.White)
+            Column {
+                Button(
+                    onClick = {
+                        if (username.value.text.isNotEmpty()
+                            && password.value.text.isNotEmpty()
+                        ) {
+                            User.isLogged = true
+                            User.username = username.value.text
+                        } else {
+                            println("Fill all the inputs!")
+                        }
+                    },
+                    shape = RoundedCornerShape(50.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red))
+                ) {
+                    Text(text = "Login", color = Color.White)
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
+                    onClick = {},
+                    shape = RoundedCornerShape(50.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
+                ) {
+                    Text(text = "Go to Signup", color = Color.White)
+                }
             }
         }
-        //Forgot Password
-        Spacer(modifier = Modifier.height(20.dp))
-        ClickableText(
-            text = AnnotatedString("Forgot password?"),
-            onClick = { },
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontFamily = FontFamily.Default
-            )
-        )
+
     }
 }
 @Preview(showBackground = true)

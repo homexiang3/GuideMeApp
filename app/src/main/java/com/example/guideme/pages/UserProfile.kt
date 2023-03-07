@@ -27,7 +27,8 @@ fun UserProfile(User:UserInfo) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .wrapContentSize(Alignment.Center),
+            .wrapContentSize(Alignment.Center)
+            .padding(horizontal = 80.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -49,6 +50,19 @@ fun UserProfile(User:UserInfo) {
         Text(
             text = User.email
         )
+        Button(onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Edit,
+                contentDescription ="Edit icon",
+                modifier = Modifier.size(20.dp),
+                tint = Color.White
+            )
+            Text(text = "Edit Profile",Modifier.padding(start = 10.dp),color = Color.White)
+        }
         LogOutButton(User)
     }
 }
@@ -60,7 +74,8 @@ private fun LogOutButton(User:UserInfo) {
         User.username = ""
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
-        shape = RoundedCornerShape(50.dp)
+        shape = RoundedCornerShape(50.dp),
+        modifier = Modifier.fillMaxWidth()
     ) {
         Icon(
             imageVector = Icons.Filled.Logout,

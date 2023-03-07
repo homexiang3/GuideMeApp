@@ -7,7 +7,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -61,17 +61,7 @@ data class MarkersInfo(
     val title: String,
     val snippet: String,
 )
-/*private val MarkersList = listOf(
-    MarkersInfo(LatLng(41.39, 2.15),"Barcelona Tour","Default Itinerary"),
-    //Generate only depending on quiz
-    MarkersInfo(LatLng( 47.37, 8.54),"Rafting Experience","Adventure Itinerary"),
-    MarkersInfo(LatLng(52.52, 13.41),"Berlin Business Trip","Business Itinerary"),
-    MarkersInfo(LatLng(51.50, -0.13),"London Museums","Cultural Itinerary"),
-    MarkersInfo(LatLng(48.86, 2.78),"Disneyland Paris","Familiar Itinerary"),
-    MarkersInfo(LatLng(43.26, -2.93),"Tapas Tour","Gastronomic Itinerary"),
-    MarkersInfo(LatLng(39.71, 2.99),"Mallorca Vacations","Relax Itinerary"),
-    MarkersInfo(LatLng(41.61, 0.62),"Rural Catalonia","Rural Itinerary"),
-)*/
+
 @Composable
 private fun markersListLogic(preferences:MutableList<Boolean>): List<MarkersInfo>{
     val markersList = remember {
@@ -123,7 +113,7 @@ private fun GenerateButton() {
         shape = RoundedCornerShape(50.dp)
     ) {
         Icon(
-            imageVector = Icons.Filled.Logout,
+            imageVector = Icons.Filled.Explore,
             contentDescription ="Generate icon",
             modifier = Modifier.size(20.dp),
             tint = Color.White
