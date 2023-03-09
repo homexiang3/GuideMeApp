@@ -16,8 +16,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.guideme.R
-import com.example.guideme.pages.*
 import com.example.guideme.UserInfo
+import com.example.guideme.pages.*
 
 sealed class BottomNavItem(var title:String, var icon: ImageVector, var screen_route:String){
 

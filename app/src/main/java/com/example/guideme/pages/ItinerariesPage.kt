@@ -8,14 +8,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -82,7 +82,7 @@ data class ItinerariesCardInfo(
     val to: String = "",
     val picture: ImageVector = Icons.Filled.Image,
 )
-private val customDataList = listOf(
+val customDataList = listOf(
     ItinerariesCardInfo("Barcelona","Beautiful place to stay",
         "15/04/2023","19/04/2023"),
     ItinerariesCardInfo("London","Beautiful place to stay",
@@ -103,7 +103,7 @@ private val customDataList = listOf(
         "15/04/2023","19/04/2023")
 )
 @Composable
-private fun ItineraryCard(data:ItinerariesCardInfo){
+fun ItineraryCard(data:ItinerariesCardInfo){
     Card(
         modifier = Modifier
             .fillMaxWidth()

@@ -7,7 +7,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Explore
+import androidx.compose.material.icons.filled.AddBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -15,11 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.guideme.R
 import com.example.guideme.UserInfo
 import com.google.android.gms.maps.model.CameraPosition
@@ -57,7 +54,7 @@ fun HomePage(User: UserInfo, navController: NavController) {
                 shape = RoundedCornerShape(50.dp)
             ) {
                 Icon(
-                    imageVector = Icons.Filled.Explore,
+                    imageVector = Icons.Filled.AddBox,
                     contentDescription ="",
                     modifier = Modifier.size(20.dp),
                     tint = Color.White
