@@ -25,6 +25,9 @@ sealed class BottomNavItem(var title:String, var icon: ImageVector, var screen_r
     object Itinerary: BottomNavItem("Itineraries",Icons.Filled.Map,"itineraries")
     object Lists: BottomNavItem("Lists",Icons.Filled.List,"lists")
     object Profile: BottomNavItem("Profile",Icons.Filled.AccountCircle,"profile")
+    object Quiz: BottomNavItem("Quiz",Icons.Filled.Quiz,"quiz")
+    object AddItinerary: BottomNavItem("Add",Icons.Filled.Add,"add")
+    object Proposed: BottomNavItem("Proposed",Icons.Filled.Map,"proposed")
 }
 @Composable
 fun BottomNavigation(navController: NavController) {
@@ -74,7 +77,7 @@ fun BottomNavigation(navController: NavController) {
 fun NavigationGraph(navController: NavHostController, User:UserInfo) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
         composable(BottomNavItem.Home.screen_route) {
-            HomePage(User)
+            HomePage(User, navController)
         }
         composable(BottomNavItem.Itinerary.screen_route) {
             ItinerariesPage()
@@ -83,7 +86,17 @@ fun NavigationGraph(navController: NavHostController, User:UserInfo) {
             ListsPage()
         }
         composable(BottomNavItem.Profile.screen_route) {
-            UserProfile(User)
+            UserProfile(User,navController)
+        }
+        //not from bottom
+        composable(BottomNavItem.Quiz.screen_route){
+            QuestionnairePage(User,navController)
+        }
+        composable(BottomNavItem.AddItinerary.screen_route){
+            AddTripPage(navController)
+        }
+        composable(BottomNavItem.Proposed.screen_route){
+            ProposedItinerariesPage(navController)
         }
     }
 }

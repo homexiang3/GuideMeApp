@@ -15,15 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.guideme.R
 import com.example.guideme.UserInfo
 
 @Composable
-fun UserProfile(User:UserInfo) {
-
+fun UserProfile(User:UserInfo, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,7 +63,8 @@ fun UserProfile(User:UserInfo) {
             )
             Text(text = "Edit Profile",Modifier.padding(start = 10.dp))
         }
-        Button(onClick = { /* TO DO CONNECT TO QUIZ*/ },
+        Button(onClick = { navController.navigate("quiz")
+            println("Navigate to quiz!") },
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
             shape = RoundedCornerShape(50.dp),
             modifier = Modifier.fillMaxWidth()
@@ -122,11 +122,4 @@ private fun LogOutButton(User:UserInfo) {
         )
         Text(text = "Log out",Modifier.padding(start = 10.dp),color = Color.White)
     }
-}
-//Preview to see UI
-@Preview(showBackground = true)
-@Composable
-fun UserProfilePreview() {
-    var user = UserInfo(true,"TestUsername")
-    UserProfile(user)
 }

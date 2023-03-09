@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.runtime.*
@@ -24,32 +25,35 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.alexstyl.swipeablecard.Direction
 import com.alexstyl.swipeablecard.ExperimentalSwipeableCardApi
 import com.alexstyl.swipeablecard.rememberSwipeableCardState
 import com.alexstyl.swipeablecard.swipableCard
 import com.example.guideme.R
 import com.example.guideme.UserInfo
+import com.example.guideme.components.BackIcon
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @OptIn(ExperimentalSwipeableCardApi::class)
 @Composable
-fun QuestionnairePage(User: UserInfo) {
+fun QuestionnairePage(User: UserInfo, navController: NavController) {
             TransparentSystemBars()
             Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
                         Brush.verticalGradient(
-                        listOf(
-                            Color(0xfff68084),
-                            Color(0xffa6c0fe),
+                            listOf(
+                                Color(0xfff68084),
+                                Color(0xffa6c0fe),
+                            )
                         )
-                    ))
+                    )
                     .systemBarsPadding()
             ) {
                 Box {
@@ -59,7 +63,7 @@ fun QuestionnairePage(User: UserInfo) {
                         mutableStateOf("Swipe a card or press a button below")
                     }
 
-                    Hint(hint)
+                    Hint(hint,navController)
 
                     val scope = rememberCoroutineScope()
                     Box(
@@ -111,7 +115,7 @@ fun QuestionnairePage(User: UserInfo) {
                                         .firstOrNull {
                                             it.second.offset.value == Offset(0f, 0f)
                                         }?.second
-                                    last?.swipe(com.alexstyl.swipeablecard.Direction.Left)
+                                    last?.swipe(Direction.Left)
                                 }
                             },
                             icon = Icons.Rounded.Close,
@@ -126,7 +130,7 @@ fun QuestionnairePage(User: UserInfo) {
                                             it.second.offset.value == Offset(0f, 0f)
                                         }?.second
 
-                                    last?.swipe(com.alexstyl.swipeablecard.Direction.Right)
+                                    last?.swipe(Direction.Right)
                                 }
                             },
                             icon = Icons.Rounded.Favorite,
@@ -150,7 +154,7 @@ private fun CircleButton(
             .clip(CircleShape)
             .background(background)
             .size(56.dp)
-            .border(2.dp,background, CircleShape),
+            .border(2.dp, background, CircleShape),
         onClick = onClick
     ) {
         Icon(icon, null,
@@ -182,20 +186,23 @@ private fun ProfileCard(
 }
 
 @Composable
-private fun Hint(text: String) {
+private fun Hint(text: String,navController: NavController) {
+
+    BackIcon(onBack = {navController.popBackStack()},Color.White)
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .padding(horizontal = 24.dp, vertical = 32.dp)
             .fillMaxWidth()
     ) {
-        Text(
-            text = text,
-            color = MaterialTheme.colors.onPrimary,
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp,
-            textAlign = TextAlign.Center
-        )
+            Text(
+                text = text,
+                color = MaterialTheme.colors.onPrimary,
+                fontWeight = FontWeight.Bold,
+                fontSize = 22.sp,
+                textAlign = TextAlign.Center
+            )
     }
 }
 
@@ -216,19 +223,20 @@ private fun TransparentSystemBars() {
 
 private fun stringFrom(direction: com.alexstyl.swipeablecard.Direction): String {
     return when (direction) {
-        com.alexstyl.swipeablecard.Direction.Left -> "Left 👈"
-        com.alexstyl.swipeablecard.Direction.Right -> "Right 👉"
-        com.alexstyl.swipeablecard.Direction.Up -> "Up 👆"
-        com.alexstyl.swipeablecard.Direction.Down -> "Down 👇"
+        Direction.Left -> "Left 👈"
+        Direction.Right -> "Right 👉"
+        Direction.Up -> "Up 👆"
+        Direction.Down -> "Down 👇"
     }
 }
 
 @Composable
 fun Scrim(modifier: Modifier = Modifier) {
-    Box(modifier
-        .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black)))
-        .height(180.dp)
-        .fillMaxWidth())
+    Box(
+        modifier
+            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black)))
+            .height(180.dp)
+            .fillMaxWidth())
 }
 
 data class MatchProfile(
@@ -246,9 +254,3 @@ val profiles = listOf(
     MatchProfile(5,"Relaxing Tourism", R.drawable.relax),
     MatchProfile(6,"Rural Tourism", R.drawable.rural),
 )
-
-@Preview(showBackground = true)
-@Composable
-fun QuizPreview() {
-    QuestionnairePage(UserInfo())
-}

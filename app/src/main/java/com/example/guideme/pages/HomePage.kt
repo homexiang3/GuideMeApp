@@ -17,6 +17,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.guideme.R
 import com.example.guideme.UserInfo
 import com.google.android.gms.maps.model.CameraPosition
@@ -27,7 +30,7 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun HomePage(User: UserInfo) {
+fun HomePage(User: UserInfo, navController: NavController) {
     val barcelona = LatLng(41.39, 2.15)
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(barcelona, 5f)
@@ -48,7 +51,19 @@ fun HomePage(User: UserInfo) {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            AddItinerariesButton()
+            Button(onClick = {navController.navigate("add")
+                println("AddItineraries")},
+                colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
+                shape = RoundedCornerShape(50.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Explore,
+                    contentDescription ="",
+                    modifier = Modifier.size(20.dp),
+                    tint = Color.White
+                )
+                Text(text = "Add Itinerary",Modifier.padding(start = 10.dp),color = Color.White)
+            }
         }
     }
 }
@@ -99,26 +114,5 @@ private fun GenerateItineraries(User:UserInfo) {
         )
     }
 }
-@Composable
-private fun AddItinerariesButton() {
-    Button(onClick = {
-        /* TO DO ADD ITINERARIES */
-    },
-        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
-        shape = RoundedCornerShape(50.dp)
-    ) {
-        Icon(
-            imageVector = Icons.Filled.Explore,
-            contentDescription ="",
-            modifier = Modifier.size(20.dp),
-            tint = Color.White
-        )
-        Text(text = "Add Itinerary",Modifier.padding(start = 10.dp),color = Color.White)
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun MapPreview() {
-    HomePage(UserInfo())
-}
+
