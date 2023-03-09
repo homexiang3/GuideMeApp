@@ -1,5 +1,6 @@
 package com.example.guideme.pages
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -8,6 +9,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddBox
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -44,6 +46,27 @@ fun HomePage(User: UserInfo, navController: NavController) {
         Row(
             Modifier
                 .padding(horizontal = 24.dp, vertical = 24.dp)
+                .align(Alignment.TopCenter)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(onClick = {},
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                shape = RoundedCornerShape(50.dp),
+                border = BorderStroke(1.dp, colorResource(id = R.color.light_gray))
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription ="",
+                    modifier = Modifier.size(20.dp),
+                    tint = Color.Black
+                )
+                Text(text = "Search a beautiful place to stay",Modifier.padding(start = 10.dp),color = Color.LightGray)
+            }
+        }
+        Row(
+            Modifier
+                .padding(horizontal = 12.dp, vertical = 24.dp)
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
