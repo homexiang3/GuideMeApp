@@ -21,7 +21,7 @@ import com.example.guideme.ui.theme.GuideMeTheme
 class UserInfo (
     isLogged:Boolean = false,
     username:String = "",
-    fullName:String = "Pepito Garcia Villanueva",
+    fullName:String = "Pepito Garcia",
     email:String = "pepito01@gmail.com",
     preferences:MutableList<Boolean> = mutableListOf(false,false,false,false,false,false,false)
 ){

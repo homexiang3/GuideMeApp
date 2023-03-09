@@ -6,9 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
@@ -17,10 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.guideme.R
 import com.example.guideme.components.SearchBar
 
 @Composable
@@ -55,11 +55,23 @@ fun ItinerariesPage() {
 fun ItinerariesList(
     dataList : List<ItinerariesCardInfo>
 ) {
-    LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        items(dataList) { data ->
-            ItineraryCard(data = data)
+    Column ( modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.weight(1f)
+        ) {
+            items(dataList) { data ->
+                ItineraryCard(data = data)
+            }
+        }
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 50.dp)
+        ) {
+            Text(text = "View past itineraries")
         }
     }
 }

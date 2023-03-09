@@ -14,4 +14,7 @@
     <string name="title_activity_top_bar">TopBar</string>
     <string name="title_activity_login_page">LoginPage</string>
     <string name="title_activity_search_bar">SearchBar</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="title_activity_add_trip_page">AddTripPage</string>
+    <string name="title_activity_proposed_itineraries_page">ProposedItinerariesPage</string>
 </resources>

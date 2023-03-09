@@ -23,8 +23,7 @@ sealed class BottomNavItem(var title:String, var icon: ImageVector, var screen_r
 
     object Home : BottomNavItem("Home", Icons.Filled.Home,"home")
     object Itinerary: BottomNavItem("Itineraries",Icons.Filled.Map,"itineraries")
-    object Favorite: BottomNavItem("Favorites",Icons.Filled.Favorite,"favorites")
-    object Questionnaire: BottomNavItem("Quiz",Icons.Filled.Quiz,"questionnaire")
+    object Lists: BottomNavItem("Lists",Icons.Filled.List,"lists")
     object Profile: BottomNavItem("Profile",Icons.Filled.AccountCircle,"profile")
 }
 @Composable
@@ -32,8 +31,7 @@ fun BottomNavigation(navController: NavController) {
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Itinerary,
-        BottomNavItem.Favorite,
-        BottomNavItem.Questionnaire,
+        BottomNavItem.Lists,
         BottomNavItem.Profile
     )
     androidx.compose.material.BottomNavigation(
@@ -81,11 +79,8 @@ fun NavigationGraph(navController: NavHostController, User:UserInfo) {
         composable(BottomNavItem.Itinerary.screen_route) {
             ItinerariesPage()
         }
-        composable(BottomNavItem.Favorite.screen_route) {
-            FavoritesPage()
-        }
-        composable(BottomNavItem.Questionnaire.screen_route) {
-            QuestionnairePage(User)
+        composable(BottomNavItem.Lists.screen_route) {
+            ListsPage()
         }
         composable(BottomNavItem.Profile.screen_route) {
             UserProfile(User)

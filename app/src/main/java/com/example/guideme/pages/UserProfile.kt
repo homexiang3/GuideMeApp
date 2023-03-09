@@ -12,9 +12,9 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,35 +23,37 @@ import com.example.guideme.UserInfo
 
 @Composable
 fun UserProfile(User:UserInfo) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .wrapContentSize(Alignment.Center)
-            .padding(horizontal = 80.dp),
+            .padding(horizontal = 70.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "User Profile",
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            fontSize = 30.sp
-        )
-        Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(64.dp))
-        Text(
-            text = User.username,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
-        )
-        Text(
-            text = User.fullName
-        )
-        Text(
-            text = User.email
-        )
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 50.dp)
+        ){
+            Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(80.dp))
+            Column (modifier = Modifier.padding(start = 10.dp)){
+                Text(
+                    text = User.username,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+                Text(
+                    text = User.fullName
+                )
+                Text(
+                    text = User.email
+                )
+            }
+        }
         Button(onClick = {},
-            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
             shape = RoundedCornerShape(50.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -59,9 +61,44 @@ fun UserProfile(User:UserInfo) {
                 imageVector = Icons.Filled.Edit,
                 contentDescription ="Edit icon",
                 modifier = Modifier.size(20.dp),
-                tint = Color.White
             )
-            Text(text = "Edit Profile",Modifier.padding(start = 10.dp),color = Color.White)
+            Text(text = "Edit Profile",Modifier.padding(start = 10.dp))
+        }
+        Button(onClick = { /* TO DO CONNECT TO QUIZ*/ },
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Quiz,
+                contentDescription ="Quiz icon",
+                modifier = Modifier.size(20.dp),
+            )
+            Text(text = "Modify Preferences",Modifier.padding(start = 10.dp))
+        }
+        Button(onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Payments,
+                contentDescription ="Payment icon",
+                modifier = Modifier.size(20.dp),
+            )
+            Text(text = "Payment History",Modifier.padding(start = 10.dp))
+        }
+        Button(onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
+            shape = RoundedCornerShape(50.dp),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Group,
+                contentDescription ="Referral icon",
+                modifier = Modifier.size(20.dp),
+            )
+            Text(text = "Referral status",Modifier.padding(start = 10.dp))
         }
         LogOutButton(User)
     }

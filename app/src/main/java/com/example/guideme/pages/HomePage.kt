@@ -7,10 +7,9 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Explore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +28,6 @@ import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
 fun HomePage(User: UserInfo) {
-    generateMarkers.value = false
     val barcelona = LatLng(41.39, 2.15)
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(barcelona, 5f)
@@ -41,18 +39,16 @@ fun HomePage(User: UserInfo) {
             modifier = Modifier.fillMaxSize(),
             cameraPositionState = cameraPositionState
         ) {
-            if(generateMarkers.value){
               GenerateItineraries(User)
-            }
         }
         Row(
             Modifier
-                .padding(horizontal = 24.dp, vertical = 32.dp)
+                .padding(horizontal = 24.dp, vertical = 24.dp)
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            GenerateButton()
+            AddItinerariesButton()
         }
     }
 }
@@ -103,22 +99,21 @@ private fun GenerateItineraries(User:UserInfo) {
         )
     }
 }
-private val generateMarkers = mutableStateOf(false)
 @Composable
-private fun GenerateButton() {
+private fun AddItinerariesButton() {
     Button(onClick = {
-        generateMarkers.value = true
+        /* TO DO ADD ITINERARIES */
     },
         colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
         shape = RoundedCornerShape(50.dp)
     ) {
         Icon(
             imageVector = Icons.Filled.Explore,
-            contentDescription ="Generate icon",
+            contentDescription ="",
             modifier = Modifier.size(20.dp),
             tint = Color.White
         )
-        Text(text = "Generate Itineraries",Modifier.padding(start = 10.dp),color = Color.White)
+        Text(text = "Add Itinerary",Modifier.padding(start = 10.dp),color = Color.White)
     }
 }
 
