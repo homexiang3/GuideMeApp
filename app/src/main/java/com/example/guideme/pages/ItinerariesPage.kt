@@ -71,7 +71,7 @@ fun ItinerariesList(
             modifier = Modifier.fillMaxWidth()
                 .padding(horizontal = 50.dp)
         ) {
-            Text(text = "View past itineraries")
+            Text(text = "View past itineraries",color = Color.Black)
         }
     }
 }

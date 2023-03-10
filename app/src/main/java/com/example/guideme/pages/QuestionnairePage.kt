@@ -92,7 +92,7 @@ fun QuestionnairePage(User: UserInfo, navController: NavController) {
                                 )
                             }
                             LaunchedEffect(matchProfile, state.swipedDirection) {
-                                if (state.swipedDirection != null) {
+                                if (state.swipedDirection != null //Only Right or Left) {
                                     hint = "You swiped ${stringFrom(state.swipedDirection!!)}"
                                     User.preferences[matchProfile.index] = state.swipedDirection == Direction.Right
                                 }

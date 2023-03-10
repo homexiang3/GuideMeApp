@@ -1,5 +1,6 @@
 package com.example.guideme.pages
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,7 +39,8 @@ fun AddTripPage(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(rememberScrollState())
+            .background(color=Color.White),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -114,16 +116,7 @@ fun AddTripPage(navController: NavController) {
 
         Button(
             onClick = {
-                if (location.value.text.isNotEmpty()
-                    && experience.value.text.isNotEmpty()
-                    && number.value.text.isNotEmpty()
-                    && starting.value.text.isNotEmpty()
-                    && ending.value.text.isNotEmpty()
-                ) {
                     navController.navigate("proposed")
-                } else {
-                    println("Fill all the inputs!")
-                }
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.red)),
             shape = RoundedCornerShape(50.dp),

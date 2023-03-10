@@ -2,6 +2,7 @@ package com.example.guideme.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -37,7 +38,8 @@ fun LoginPage(User:UserInfo = UserInfo()) {
     Column(
         modifier = Modifier.padding(20.dp)
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center),
+            .wrapContentSize(Alignment.Center)
+            .background(color = Color.White),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -113,7 +115,7 @@ fun LoginPage(User:UserInfo = UserInfo()) {
                         .height(50.dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray))
                 ) {
-                    Text(text = "Go to Signup")
+                    Text(text = "Go to Signup",color = Color.Black)
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
@@ -129,7 +131,7 @@ fun LoginPage(User:UserInfo = UserInfo()) {
                         contentDescription = "Google logo",
                         modifier = Modifier.size(20.dp)
                     )
-                    Text(text = "Log in with Google",Modifier.padding(start = 10.dp))
+                    Text(text = "Log in with Google",Modifier.padding(start = 10.dp), color = Color.Black)
                 }
             }
         }
