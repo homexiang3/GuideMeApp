@@ -117,8 +117,9 @@ fun ItineraryCard(data:ItinerariesCardInfo){
         Row {
             Icon(
                 imageVector = data.picture,
-                contentDescription = "User logo",
-                modifier = Modifier.size(64.dp)
+                contentDescription = "",
+                modifier = Modifier.size(64.dp),
+                tint = Color.Black
             )
             Row (
                 modifier = Modifier.fillMaxWidth(),
@@ -129,20 +130,24 @@ fun ItineraryCard(data:ItinerariesCardInfo){
                         text = data.name,
                         modifier = Modifier.padding(5.dp),
                         fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp
+                        fontSize = 15.sp,
+                        color = Color.Black
                     )
                     Text(
                         text = data.description,
+                        color = Color.Black
                     )
                 }
                 Column (modifier = Modifier.padding(2.dp)){
                     Text(
                         text = "From: ${data.from}",
-                        fontSize = 10.sp
+                        fontSize = 10.sp,
+                        color = Color.Black
                     )
                     Text(
                         text = "To: ${data.to}",
-                        fontSize = 10.sp
+                        fontSize = 10.sp,
+                        color = Color.Black
                     )
                 }
 

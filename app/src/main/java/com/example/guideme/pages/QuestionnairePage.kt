@@ -83,6 +83,7 @@ fun QuestionnairePage(User: UserInfo, navController: NavController) {
                                                 // so that we track button clicks & swipes
                                                 // from the same place
                                             },
+                                            blockedDirections = listOf(Direction.Down,Direction.Up),
                                             onSwipeCancel = {
                                                 Log.d("Swipeable-Card", "Cancelled swipe")
                                                 hint = "You canceled the swipe"
@@ -92,7 +93,7 @@ fun QuestionnairePage(User: UserInfo, navController: NavController) {
                                 )
                             }
                             LaunchedEffect(matchProfile, state.swipedDirection) {
-                                if (state.swipedDirection != null //Only Right or Left) {
+                                if (state.swipedDirection != null ) {
                                     hint = "You swiped ${stringFrom(state.swipedDirection!!)}"
                                     User.preferences[matchProfile.index] = state.swipedDirection == Direction.Right
                                 }
@@ -219,7 +220,7 @@ private fun TransparentSystemBars() {
     }
 }
 
-private fun stringFrom(direction: com.alexstyl.swipeablecard.Direction): String {
+private fun stringFrom(direction: Direction): String {
     return when (direction) {
         Direction.Left -> "Left 👈"
         Direction.Right -> "Right 👉"

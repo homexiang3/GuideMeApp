@@ -36,18 +36,21 @@ fun UserProfile(User:UserInfo, navController: NavController) {
                 .fillMaxWidth()
                 .padding(vertical = 50.dp)
         ){
-            Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(80.dp))
+            Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "User logo", modifier = Modifier.size(80.dp), tint = Color.Black)
             Column (modifier = Modifier.padding(start = 10.dp)){
                 Text(
                     text = User.username,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = Color.Black
                 )
                 Text(
-                    text = User.fullName
+                    text = User.fullName,
+                    color = Color.Black
                 )
                 Text(
-                    text = User.email
+                    text = User.email,
+                    color = Color.Black
                 )
             }
         }
@@ -60,8 +63,9 @@ fun UserProfile(User:UserInfo, navController: NavController) {
                 imageVector = Icons.Filled.Edit,
                 contentDescription ="Edit icon",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
-            Text(text = "Edit Profile",Modifier.padding(start = 10.dp))
+            Text(text = "Edit Profile",Modifier.padding(start = 10.dp),color = Color.Black)
         }
         Button(onClick = { navController.navigate("quiz")
             println("Navigate to quiz!") },
@@ -73,8 +77,9 @@ fun UserProfile(User:UserInfo, navController: NavController) {
                 imageVector = Icons.Filled.Quiz,
                 contentDescription ="Quiz icon",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
-            Text(text = "Modify Preferences",Modifier.padding(start = 10.dp))
+            Text(text = "Modify Preferences",Modifier.padding(start = 10.dp),color = Color.Black)
         }
         Button(onClick = {},
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
@@ -85,8 +90,9 @@ fun UserProfile(User:UserInfo, navController: NavController) {
                 imageVector = Icons.Filled.Payments,
                 contentDescription ="Payment icon",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
-            Text(text = "Payment History",Modifier.padding(start = 10.dp))
+            Text(text = "Payment History",Modifier.padding(start = 10.dp),color = Color.Black)
         }
         Button(onClick = {},
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.light_gray)),
@@ -97,8 +103,9 @@ fun UserProfile(User:UserInfo, navController: NavController) {
                 imageVector = Icons.Filled.Group,
                 contentDescription ="Referral icon",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
-            Text(text = "Referral status",Modifier.padding(start = 10.dp))
+            Text(text = "Referral status",Modifier.padding(start = 10.dp),color = Color.Black)
         }
         LogOutButton(User)
     }

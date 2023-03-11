@@ -40,7 +40,7 @@ fun AddTripPage(navController: NavController) {
             .fillMaxSize()
             .padding(horizontal = 10.dp)
             .verticalScroll(rememberScrollState())
-            .background(color=Color.White),
+            .background(Color.White),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -53,7 +53,8 @@ fun AddTripPage(navController: NavController) {
             BackIcon(onBack = {navController.popBackStack()})
             Text(
                 text = "Back",
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = Modifier.padding(start = 10.dp),
+                color = Color.Black
             )
         }
         //Title
@@ -61,13 +62,15 @@ fun AddTripPage(navController: NavController) {
             text = "Add Trip",
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
-            modifier = Modifier.padding(bottom = 30.dp)
+            modifier = Modifier.padding(bottom = 30.dp),
+            color = Color.Black
         )
         //FORM
         Text(
             text = "I want to go to...",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
+            color = Color.Black
         )
         TextField(
             label = { Text(text = "Location") },
@@ -78,6 +81,7 @@ fun AddTripPage(navController: NavController) {
             text = "With this number of people",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
+            color = Color.Black
             )
         TextField(
             label = { Text(text = "Number") },
@@ -89,6 +93,7 @@ fun AddTripPage(navController: NavController) {
             text = "I want to experience",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
+            color = Color.Black
         )
         TextField(
             label = { Text(text = "Experience Type") },
@@ -99,6 +104,7 @@ fun AddTripPage(navController: NavController) {
             text = "Starting on",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
+            color = Color.Black
         )
         TextField(
             label = { Text(text = "DD/MM/YY") },
@@ -108,6 +114,7 @@ fun AddTripPage(navController: NavController) {
             text = "And ending on",
             fontWeight = FontWeight.Bold,
             fontSize = 20.sp,
+            color = Color.Black
         )
         TextField(
             label = { Text(text = "DD/MM/YY") },

@@ -1,5 +1,6 @@
 package com.example.guideme.pages
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,7 +25,8 @@ fun ProposedItinerariesPage(navController: NavController) {
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 10.dp)
+            .background(Color.White),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -37,7 +39,8 @@ fun ProposedItinerariesPage(navController: NavController) {
             BackIcon(onBack = { navController.popBackStack() })
             Text(
                 text = "Back",
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = Modifier.padding(start = 10.dp),
+                color = Color.Black
             )
         }
         //Title
@@ -48,7 +51,8 @@ fun ProposedItinerariesPage(navController: NavController) {
                 text = "Proposed Itineraries",
                 fontWeight = FontWeight.Bold,
                 fontSize = 30.sp,
-                modifier = Modifier.padding(end = 10.dp)
+                modifier = Modifier.padding(end = 10.dp),
+                color = Color.Black
             )
             Icon(imageVector = Icons.Filled.FilterAlt, contentDescription = "Filter Icon", tint = Color.Black,
             modifier = Modifier.size(30.dp))

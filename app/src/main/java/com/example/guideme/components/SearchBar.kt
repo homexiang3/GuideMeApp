@@ -34,13 +34,13 @@ fun SearchBar() {
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Search,
-                tint = MaterialTheme.colors.onBackground,
-                contentDescription = "Search icon"
+                tint = Color.LightGray,
+                contentDescription = "Search icon",
             )
         },
         trailingIcon = { Icon(imageVector = Icons.Filled.FilterAlt, contentDescription = "Filter Icon", tint = Color.Black)},
         maxLines = 1,
-        colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.Transparent),
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.White),
         placeholder = { Text(text = "Search something") },
         textStyle = MaterialTheme.typography.subtitle1,
         singleLine = true,

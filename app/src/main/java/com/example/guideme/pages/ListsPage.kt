@@ -27,12 +27,14 @@ fun ListsPage() {
     Box (
         modifier = Modifier.padding(vertical = 50.dp)
             .fillMaxWidth()
+            .background(Color.White)
             ) {
         Text(
             text = "My Lists",
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center),
+            color = Color.Black
         )
     }
     Column(
@@ -53,6 +55,7 @@ fun ListsPage() {
                 imageVector = Icons.Filled.Bookmark,
                 contentDescription ="",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
             Text(text = "View Whishlist",Modifier.padding(start = 10.dp), fontSize = 20.sp)
         }
@@ -65,6 +68,7 @@ fun ListsPage() {
                 imageVector = Icons.Filled.Favorite,
                 contentDescription ="",
                 modifier = Modifier.size(20.dp),
+                tint = Color.Black
             )
             Text(text = "View Favorites",Modifier.padding(start = 10.dp), fontSize = 20.sp)
         }
